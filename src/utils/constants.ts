@@ -20,3 +20,7 @@ export const user = {
 	},
 	__v: 0
 } as const;
+
+export const app = {
+	apiUrl: 'https://fakestoreapi.com'
+} as const;
