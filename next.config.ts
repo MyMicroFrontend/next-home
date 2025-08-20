@@ -1,7 +1,19 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+	/* config options here */
+	async rewrites() {
+		return [
+			{
+				source: '/cart',
+				destination: `${process.env.CART_DOMAIN}/cart`
+			},
+			{
+				source: '/cart/:path+',
+				destination: `${process.env.CART_DOMAIN}/cart/:path+`
+			}
+		];
+	}
 };
 
 export default nextConfig;
