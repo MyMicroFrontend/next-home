@@ -8,10 +8,10 @@ export type Product = {
 	rating: Rating;
 };
 
-export type Rating {
+export type Rating = {
 	rate: number;
 	count: number;
-}
+};
 
 export type Cart = {
 	productId: number;
