@@ -1,5 +1,5 @@
 import { HomeContainer } from '@/containers/home';
-import { fetchPopularProducts } from './actions';
+import { fetchPopularProducts } from '@/utils/base-actions';
 
 export default async function MainPage() {
 	const products = await fetchPopularProducts();

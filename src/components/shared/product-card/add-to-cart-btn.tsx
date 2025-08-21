@@ -1,20 +1,20 @@
 'use client';
 
-import { Product } from '@/utils/types';
+import { addToCartActionAsync } from '@/utils/base-actions';
 import { PlusCircleIcon } from 'lucide-react';
 import { FC } from 'react';
 import { Button } from '../button';
-import { addToCartActionAsync } from './actions';
 
 export const AddToCartBtn: FC<{ productId: number }> = ({ productId }) => {
 	return (
 		<Button
-			onClick={async () => {
+			onClick={async (e) => {
+				e.preventDefault();
 				const response = await addToCartActionAsync(productId);
 				console.log(response);
 			}}
-			className="w-full">
-			<PlusCircleIcon className="fill-white text-violet-700 mr-2 !size-6" />
+			className="w-full text-sm lg:text-base">
+			<PlusCircleIcon className="fill-white text-violet-700 mr-1 lg:mr-2 !size-5 lg:!size-6" />
 			<span>Add to cart</span>
 		</Button>
 	);

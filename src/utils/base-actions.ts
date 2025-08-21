@@ -1,8 +1,33 @@
 'use server';
 
-import { CookieService } from '@/utils/cookie-storage';
-import { Cart } from '@/utils/types';
 import { revalidatePath } from 'next/cache';
+import { AxiosApi } from './axios';
+import { CookieService } from './cookie-storage';
+import { Cart, Product } from './types';
+
+export async function fetchProducts() {
+	try {
+		const axios = new AxiosApi();
+
+		const response = await axios.get<Product[]>('products');
+
+		return response;
+	} catch (error) {
+		console.error('fetchProducts Error', error);
+		return [];
+	}
+}
+
+export async function fetchPopularProducts() {
+	try {
+		const products = await fetchProducts();
+
+		return products.slice(0, 4);
+	} catch (error) {
+		console.error('fetchPopularProducts Error', error);
+		return [];
+	}
+}
 
 function createCart(productId: number): Cart[] {
 	const cart: Cart = { count: 1, productId };
@@ -28,6 +53,6 @@ export async function addToCartActionAsync(productId: number) {
 
 		revalidatePath('/', 'layout');
 	} catch (error) {
-		console.error('Add to cart error', error);
+		console.error('addToCartActionAsync Error', error);
 	}
 }
