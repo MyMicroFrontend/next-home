@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { Container } from '../../shared/container';
 import { HeaderMenu } from './menu';
 import { user } from '@/utils/constants';
+import { Button } from '@/components/shared/button';
+import { CartBtn } from './cart-btn';
 
 export const Header = () => {
 	return (
@@ -26,20 +28,7 @@ export const Header = () => {
 				</nav>
 
 				<div className="flex items-center justify-end gap-2">
-					<Link href="/profile" className="inline-flex items-center justify-center border hover:bg-violet-50 transition-colors border-zinc-400 rounded-lg h-10 pr-4 pl-1 bg-zinc-50 text-sm">
-						<div className="size-8 leading-8 border border-violet-400 rounded-full mr-2 bg-violet-100 inline-flex items-center justify-center text-violet-900 font-medium">
-							{user.name.firstname.at(0)?.toUpperCase()}
-							{user.name.lastname.at(0)?.toUpperCase()}
-						</div>
-
-						<span>My Profile</span>
-					</Link>
-
-					<Link href="/profile" className="inline-flex items-center justify-center border font-semibold border-zinc-400 hover:bg-violet-50 transition-colors rounded-lg h-10 px-4 bg-zinc-50 text-sm relative">
-						<div className="size-5 leading-5 border rounded-full mr-2 bg-violet-900 inline-flex items-center justify-center text-white font-medium absolute -top-2 -right-4">1</div>
-
-						<span>Cart</span>
-					</Link>
+					<CartBtn />
 				</div>
 			</Container>
 		</header>
