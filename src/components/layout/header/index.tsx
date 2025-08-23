@@ -1,18 +1,15 @@
-import Link from 'next/link';
 import { Container } from '../../shared/container';
-import { HeaderMenu } from './menu';
-import { user } from '@/utils/constants';
-import { Button } from '@/components/shared/button';
 import { CartBtn } from './cart-btn';
+import { HeaderMenu } from './menu';
 
 export const Header = () => {
 	return (
 		<header className="shadow-sm sticky backdrop-blur-2xl">
 			<Container className="h-14 flex items-center">
 				<div>
-					<Link href="/" className="text-lg cursor-pointer">
+					<a href="/" className="text-lg cursor-pointer">
 						Micro <span className="text-violet-700 font-semibold">Shop</span>
-					</Link>
+					</a>
 				</div>
 
 				<nav className="mx-auto">

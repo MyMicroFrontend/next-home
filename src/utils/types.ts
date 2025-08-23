@@ -28,3 +28,11 @@ export type CookieServiceSetGetOptions<T> = CookieServiceBaseOptions & {
 	value: T;
 	expires?: Date;
 };
+
+export type ToastProps = {
+	removeAlert: (id: number) => void;
+	id: number;
+	variant: 'success' | 'error' | 'warning' | 'info';
+	message: string;
+	title?: string;
+};
