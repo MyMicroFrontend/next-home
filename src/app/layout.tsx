@@ -1,7 +1,9 @@
-import type { Metadata } from 'next';
-import { Geist, Poppins } from 'next/font/google';
-import './globals.css';
 import { Header } from '@/components/layout/header';
+import type { Metadata } from 'next';
+import { Poppins } from 'next/font/google';
+import './globals.css';
+import StoreProvider from './store-provider';
+import { Toast } from '@/components/shared/toast/toast';
 
 const geistSans = Poppins({
 	subsets: ['latin-ext'],
@@ -17,8 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 	return (
 		<html lang="en">
 			<body className={`${geistSans.className} antialiased`}>
-				<Header />
-				{children}
+				<StoreProvider>
+					<Header />
+
+					{children}
+
+					<Toast position="bottom-right" />
+				</StoreProvider>
 			</body>
 		</html>
 	);

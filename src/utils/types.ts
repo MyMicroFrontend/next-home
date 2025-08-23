@@ -30,7 +30,6 @@ export type CookieServiceSetGetOptions<T> = CookieServiceBaseOptions & {
 };
 
 export type ToastProps = {
-	removeAlert: (id: number) => void;
 	id: number;
 	variant: 'success' | 'error' | 'warning' | 'info';
 	message: string;

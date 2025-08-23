@@ -1,15 +1,14 @@
 'use client';
 
+import { removeToast } from '@/stores/app/actions';
 import { ToastProps } from '@/utils/types';
 import { BadgeInfoIcon, CheckIcon, InfoIcon } from 'lucide-react';
 import { FC, useEffect } from 'react';
 
-import React from 'react';
-
-export const ToastItem: FC<ToastProps> = ({ id, removeAlert, message, variant, title }) => {
+export const ToastItem: FC<ToastProps> = ({ id, message, variant, title }) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			removeAlert(id);
+			removeToast(id);
 		}, 3000);
 
 		return () => {
@@ -20,10 +19,10 @@ export const ToastItem: FC<ToastProps> = ({ id, removeAlert, message, variant, t
 	return (
 		<div
 			className={'rounded flex min-w-72 items-start max-w-full px-4 py-3 z-[60] text-white'.concat(
-				variant === 'success' ? 'bg-green-700' : '',
-				variant === 'error' ? 'bg-red-700' : '',
-				variant === 'warning' ? 'bg-amber-600' : '',
-				variant === 'info' ? 'bg-sky-600' : ''
+				variant === 'success' ? ' bg-green-700' : '',
+				variant === 'error' ? ' bg-red-700' : '',
+				variant === 'warning' ? ' bg-amber-600' : '',
+				variant === 'info' ? ' bg-sky-600' : ''
 			)}>
 			{variant === 'success' ? <CheckIcon className="mr-3 size-6" /> : null}
 			{variant === 'error' ? <BadgeInfoIcon className="mr-3 size-6" /> : null}
