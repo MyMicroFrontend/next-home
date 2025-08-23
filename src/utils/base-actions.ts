@@ -5,6 +5,19 @@ import { AxiosApi } from './axios';
 import { CookieService } from './cookie-storage';
 import { Cart, Product } from './types';
 
+export async function fetchProductByIdActionAsync(productId: number): Promise<Product | null> {
+	try {
+		const axios = new AxiosApi();
+
+		const response = axios.get<Product>(`products/${productId}`);
+
+		return response;
+	} catch (error) {
+		console.error('fetchProductById Error', error);
+		return null;
+	}
+}
+
 export async function fetchProducts() {
 	try {
 		const axios = new AxiosApi();
@@ -30,7 +43,7 @@ export async function fetchPopularProducts() {
 }
 
 function createCart(productId: number): Cart[] {
-	const cart: Cart = { count: 1, productId };
+	const cart: Cart = { quantity: 1, productId };
 
 	return [cart];
 }
@@ -38,7 +51,7 @@ function createCart(productId: number): Cart[] {
 function updateCartItem(cart: Cart[], productId: number): Cart[] {
 	const findedCartItemIndex = cart.findIndex((_cart) => _cart.productId === productId);
 
-	findedCartItemIndex > -1 ? (cart[findedCartItemIndex].count += 1) : cart.push({ count: 1, productId });
+	findedCartItemIndex > -1 ? (cart[findedCartItemIndex].quantity += 1) : cart.push({ quantity: 1, productId });
 
 	return cart;
 }

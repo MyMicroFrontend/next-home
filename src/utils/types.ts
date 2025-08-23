@@ -15,7 +15,7 @@ export type Rating = {
 
 export type Cart = {
 	productId: number;
-	count: number;
+	quantity: number;
 };
 
 export type CookieStorageKeys = 'cart';

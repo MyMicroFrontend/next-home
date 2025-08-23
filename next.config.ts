@@ -9,11 +9,13 @@ const nextConfig: NextConfig = {
 		return [
 			{
 				source: '/cart',
-				destination: `${process.env.CART_DOMAIN}/cart`
+				destination: `${process.env.CART_DOMAIN}/cart`,
+				headers: [{ key: 'x-forwarded-host', value: 'main-app.com' }]
 			},
 			{
 				source: '/cart/:path+',
-				destination: `${process.env.CART_DOMAIN}/cart/:path+`
+				destination: `${process.env.CART_DOMAIN}/cart/:path+`,
+				headers: [{ key: 'x-forwarded-host', value: 'main-app.com' }]
 			}
 		];
 	}
