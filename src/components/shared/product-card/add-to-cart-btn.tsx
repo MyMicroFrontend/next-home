@@ -1,10 +1,10 @@
 'use client';
 
-import { addToCartActionAsync } from '@/utils/base-actions';
+import { addCartItemAsync } from '@/stores/cart/actions';
+import { addToast } from '@/stores/toast/actions';
 import { PlusCircleIcon } from 'lucide-react';
 import { FC } from 'react';
 import { Button } from '../button';
-import { addToast } from '@/stores/app/actions';
 
 export const AddToCartBtn: FC<{ productId: number }> = ({ productId }) => {
 	return (
@@ -12,7 +12,7 @@ export const AddToCartBtn: FC<{ productId: number }> = ({ productId }) => {
 			onClick={async (e) => {
 				e.preventDefault();
 				try {
-					await addToCartActionAsync(productId);
+					await addCartItemAsync(productId);
 					addToast({ message: 'Product added to cart', variant: 'success' });
 				} catch (error) {
 					addToast({ message: 'Product can not added to cart', variant: 'error' });

@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector } from 'react-redux';
-import { toastReducer } from './app';
+import { toastReducer } from './toast';
+import { cartReducer } from './cart';
 
 export const store = configureStore({
-	reducer: { toast: toastReducer },
+	reducer: {
+		toast: toastReducer,
+		cart: cartReducer
+	},
 	middleware: (_option) => _option({ serializableCheck: false })
 });
 

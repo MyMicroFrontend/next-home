@@ -42,6 +42,10 @@ export async function fetchPopularProducts() {
 	}
 }
 
+export async function fetchCart() {
+	return await CookieService.getAndParse<Cart[]>({ name: 'cart' });
+}
+
 function createCart(productId: number): Cart[] {
 	const cart: Cart = { quantity: 1, productId };
 
@@ -65,7 +69,10 @@ export async function addToCartActionAsync(productId: number) {
 		await CookieService.set({ name: 'cart', value: cart });
 
 		revalidatePath('/', 'layout');
+
+		return cart;
 	} catch (error) {
 		console.error('addToCartActionAsync Error', error);
+		throw error;
 	}
 }

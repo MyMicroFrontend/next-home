@@ -1,6 +1,6 @@
 'use client';
 
-import { removeToast } from '@/stores/app/actions';
+import { removeToast } from '@/stores/toast/actions';
 import { ToastProps } from '@/utils/types';
 import { BadgeInfoIcon, CheckIcon, InfoIcon } from 'lucide-react';
 import { FC, useEffect } from 'react';

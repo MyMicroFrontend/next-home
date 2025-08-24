@@ -1,6 +1,6 @@
 'use client';
 
-import { useToasts } from '@/stores/app/hooks';
+import { useToasts } from '@/stores/toast/hooks';
 import { FC } from 'react';
 import { ToastItem } from './toast-item';
 
