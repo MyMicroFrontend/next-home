@@ -1,16 +1,10 @@
 'use client';
 
 import { Button } from '@/components/shared/button';
-import { loadCartAsync } from '@/stores/cart/actions';
 import { useCarts } from '@/stores/cart/hooks';
-import { useEffect } from 'react';
 
 export const CartBtn = () => {
 	const carts = useCarts();
-
-	useEffect(() => {
-		loadCartAsync();
-	}, []);
 
 	return (
 		<a href="/cart">

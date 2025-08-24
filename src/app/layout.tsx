@@ -4,6 +4,7 @@ import { Poppins } from 'next/font/google';
 import './globals.css';
 import StoreProvider from './store-provider';
 import { Toast } from '@/components/shared/toast/toast';
+import { fetchCart } from '@/utils/base-actions';
 
 const geistSans = Poppins({
 	subsets: ['latin-ext'],
@@ -15,11 +16,13 @@ export const metadata: Metadata = {
 	description: 'Shopping app with micro-frontend'
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+	const carts = await fetchCart();
+
 	return (
 		<html lang="en">
 			<body className={`${geistSans.className} antialiased`}>
-				<StoreProvider>
+				<StoreProvider carts={carts || []}>
 					<Header />
 
 					{children}
