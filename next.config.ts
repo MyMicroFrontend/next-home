@@ -7,16 +7,12 @@ const nextConfig: NextConfig = {
 	},
 	async rewrites() {
 		return [
-			{
-				source: '/cart',
-				destination: `${process.env.CART_DOMAIN}/cart`
-			},
-			{
-				source: '/cart/:path+',
-				destination: `${process.env.CART_DOMAIN}/cart/:path+`
-			}
+			{ source: '/cart', destination: `${process.env.CART_DOMAIN}/cart` },
+			{ source: '/cart/:path+', destination: `${process.env.CART_DOMAIN}/cart/:path+` }
 		];
-	}
+	},
+	compress: true,
+	poweredByHeader: false
 };
 
 export default nextConfig;

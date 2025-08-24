@@ -1,10 +1,10 @@
 import { Header } from '@/components/layout/header';
+import { Toast } from '@/components/shared/toast/toast';
+import { fetchCart } from '@/utils/base-actions';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 import './globals.css';
 import StoreProvider from './store-provider';
-import { Toast } from '@/components/shared/toast/toast';
-import { fetchCart } from '@/utils/base-actions';
 
 const geistSans = Poppins({
 	subsets: ['latin-ext'],
